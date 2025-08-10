@@ -136,13 +136,13 @@ class ViewRenderer {
                 <div class="achievement-meta">
                     <div class="meta-grid">
                         <div class="meta-item">
-                            <div class="meta-label">📅 Unlocked</div>
-                            <div class="meta-value"><?= date('M j, Y g:i A', $achievement['unlock_time']) ?></div>
+                            <div class="meta-label">Unlocked</div>
+                            <div class="meta-value">📅 <?= date('M j, Y g:i A', $achievement['unlock_time']) ?></div>
                         </div>
                         
                         <?php if ($achievement['global_percentage'] !== null): ?>
                         <div class="meta-item">
-                            <div class="meta-label">🏆 Rarity</div>
+                            <div class="meta-label">Rarity</div>
                             <div class="meta-value"><?= self::rarityBadge($achievement, true) ?></div>
                         </div>
                         <?php endif; ?>
