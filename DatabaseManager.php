@@ -26,7 +26,7 @@ class DatabaseManager {
                 app_id INTEGER NOT NULL,
                 achievement_key TEXT NOT NULL,
                 unlock_time INTEGER NOT NULL,
-                discovered_at INTEGER NOT NULL DEFAULT (strftime("%s", "now")),
+                discovered_at INTEGER NOT NULL,
                 PRIMARY KEY (steam_id, app_id, achievement_key)
             )
         ');
@@ -35,7 +35,7 @@ class DatabaseManager {
             CREATE TABLE IF NOT EXISTS games (
                 app_id INTEGER PRIMARY KEY,
                 name TEXT NOT NULL,
-                last_checked INTEGER NOT NULL DEFAULT (strftime("%s", "now"))
+                last_checked INTEGER NOT NULL
             )
         ');
         
@@ -48,7 +48,7 @@ class DatabaseManager {
                 icon TEXT,
                 hidden INTEGER DEFAULT 0,
                 global_percentage REAL,
-                last_updated INTEGER NOT NULL DEFAULT (strftime("%s", "now")),
+                last_updated INTEGER NOT NULL,
                 PRIMARY KEY (app_id, achievement_key)
             )
         ');
@@ -56,7 +56,7 @@ class DatabaseManager {
         $this->db->exec('
             CREATE TABLE IF NOT EXISTS update_log (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                last_update INTEGER NOT NULL DEFAULT (strftime("%s", "now")),
+                last_update INTEGER NOT NULL,
                 achievements_found INTEGER NOT NULL DEFAULT 0,
                 games_checked INTEGER NOT NULL DEFAULT 0,
                 execution_time REAL,
@@ -70,7 +70,7 @@ class DatabaseManager {
                 username TEXT,
                 avatar_url TEXT,
                 profile_url TEXT,
-                last_updated INTEGER NOT NULL DEFAULT (strftime("%s", "now"))
+                last_updated INTEGER NOT NULL
             )
         ');
         
